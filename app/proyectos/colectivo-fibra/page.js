@@ -28,7 +28,7 @@ export default function FibraParentPage() {
       {/* 2. CABECERA DEL PROYECTO PADRE */}
       <div className="w-full mb-16 border-b border-black pb-12">
             
-            <h1 className="text-5xl bg-black text-white md:text-8xl font-bold mb-6 leading-tight uppercase tracking-tighter">
+            <h1 className="text-5xl bg-black text-white md:text-4xl font-bold mb-6 leading-tight uppercase tracking-tighter">
               
                 ☆ COLECTIVO FIBRA   ☆ 
             </h1>

@@ -9,7 +9,7 @@ export default function AboutPage() {
           <div className="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden relative shadow-lg">
              {/* IMPORTANTE: Acuérdate de cambiar esta url por una foto suya real en /public */}
            <img 
-            src="/sobre-mi.jpg"  // <--- Solo esto. Next.js busca automáticamente en la carpeta public
+            src="/img/sobre-mi.JPG"  // <--- Solo esto. Next.js busca automáticamente en la carpeta public
             alt="Lucía Martín Lagunas" 
             className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
 />

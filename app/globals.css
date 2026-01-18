@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  /* Aquí están definidos tus colores base: Blanco y Negro */
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -12,12 +13,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* HE BORRADO EL BLOQUE @media (prefers-color-scheme: dark) 
+   Así evitamos que se active el modo oscuro automáticamente.
+   Ahora siempre usará los colores del :root de arriba (Blanco).
+*/
 
 body {
   background: var(--background);
