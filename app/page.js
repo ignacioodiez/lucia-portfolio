@@ -47,7 +47,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       
       {/* --- HEADER --- */}
-      <div className="container mx-auto px-4 pt-12 pb-8">
+      <div className="container mx-auto px-4 pt-4 pb-8">
         <div className="flex flex-wrap items-center justify-center gap-4">
             
             <button

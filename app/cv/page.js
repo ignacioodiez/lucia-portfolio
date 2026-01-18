@@ -149,11 +149,7 @@ export default function CVPage() {
       </section>
       
       {/* Botón Descarga (Opcional) */}
-      <div className="mt-12 text-center">
-        <a href="#" className="text-sm underline hover:text-gray-600 transition-colors">
-          Download Full PDF
-        </a>
-      </div>
+      
 
     </div>
   );

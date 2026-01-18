@@ -2,83 +2,118 @@
 import Link from 'next/link';
 import { projects } from '../../../data/projects'; 
 
-export default function FanzinesPage() {
-  // Buscamos el proyecto por su slug
+export default function FanzinesInfamesPage() {
+  // 1. BUSCAMOS EL PROYECTO CORRECTO
   const project = projects.find(p => p.slug === 'fanzines-infames');
 
   if (!project) return <div>Proyecto no encontrado</div>;
 
-  return (
-    <div className="min-h-screen bg-white p-6 md:p-12 pb-20 flex flex-col">
-      
-      {/* 1. BOTÓN VOLVER */}
-      <div className="mb-8">
-        <Link 
-            href="/" 
-            className="text-sm font-medium text-gray-500 hover:text-black transition-colors border border-gray-200 px-4 py-2 rounded-full"
-        >
-            ← Volver
-        </Link>
-      </div>
+  // 2. DEFINIMOS LA FOTO LATERAL
+  // He puesto la [0] por defecto. Si quieres la [5] como en el otro, cambia el 0 por un 5.
+  const imgSide = project.gallery?.[5] || project.image; 
 
-      {/* 2. CABECERA (Estilo FIBRA Child) */}
-      <div className="w-full mb-16 border-b border-black pb-8">
+  return (
+    <div className="min-h-screen bg-white">
+      
+      {/* --- PARTE SUPERIOR (Split) --- */}
+      <div className="flex flex-col md:flex-row min-h-screen">
+        
+        {/* IZQUIERDA: FOTO FIJA */}
+        <div className="md:w-2/4 bg-white relative flex items-center justify-center">
+         
+         
+          <div className="sticky top-0 h-screen w-full flex items-center justify-center p-0">
+            {imgSide && (
+                <img 
+                src={imgSide} 
+                alt="Portada lateral" 
+                className="h-full w-full object-cover" 
+                />
+            )}
+          </div>
+        </div>
+
+        {/* DERECHA: TEXTO (ESTILO FIBRA) */}
+        <div className="w-full md:w-3/4 flex items-center bg-white">
+         
+          <div className="p-8 md:p-12 md:pr-24 w-full"> 
             
-            {/* DISCLAIMER: Parte de FIBRA */}
-            <Link 
-                href="/proyectos/colectivo-fibra"
-                className="inline-block mb-6 text-xs font-bold uppercase tracking-widest text-white bg-black px-3 py-1 rounded-sm hover:bg-gray-800 transition-colors"
-            >
-                ← Proyecto parte de Colectivo FIBRA
-            </Link>
-            
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight uppercase">
-                {project.title}
-            </h1>
-            
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-                 {/* Categorías y Año */}
-                 <div className="flex justify-between items-end w-full text-sm font-mono text-gray-500">
-                    <span className="text-black uppercase tracking-wider text-lg">
-                        {project.categories.join(' + ')}
+            {/* CABECERA ESTILO FIBRA */}
+            <div className="mb-10 border-b border-black pb-6">
+               
+                {/* 1. BADGE FIBRA */}
+                <div className="mb-8">
+                <Link 
+                    href="/" 
+                    className="text-sm font-medium text-gray-500 hover:text-black transition-colors"
+                >
+                    ← Volver
+                </Link>
+            </div>
+                <Link 
+                    href="/proyectos/colectivo-fibra"
+                    className="inline-block mb-6 text-xs font-bold uppercase tracking-widest text-white bg-black px-3 py-1 rounded-sm hover:bg-gray-800 transition-colors"
+                >
+                     ☆ Proyecto parte de Colectivo FIBRA☆
+                </Link>
+
+                {/* 2. TÍTULO EN MAYÚSCULAS Y FUERTE */}
+                <h1 className="text-4xl md:text-4xl font-bold mb-6 leading-tight uppercase">
+                    {project.title}
+                </h1>
+
+                {/* 3. METADATOS CON MARGEN AMPLIO (mb-12) */}
+                <div className="flex flex-wrap gap-6 text-sm md:text-base text-gray-500 font-mono mb-12">
+                    <span className="text-black">
+                        {project.categories ? project.categories.join(' / ') : 'Sin categoría'}
                     </span>
-                    <span className="text-black font-bold text-2xl">
-                        {project.year}
-                    </span>
+                    <span>—</span>
+                    <span>{project.year}</span>
                 </div>
             </div>
 
-            {/* Descripción */}
-            <div className="prose prose-xl text-gray-800 whitespace-pre-line max-w-none mb-8">
+            {/* DESCRIPCIÓN */}
+            <div className="prose prose-xl text-gray-800 whitespace-pre-line mb-12 max-w-none">
                 <p>{project.description}</p>
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-3">
-                {project.tags.map(tag => (
-                    <span key={tag} className="bg-gray-100 text-gray-600 px-4 py-2 text-sm font-bold uppercase rounded-full">
-                        #{tag}
-                    </span>
-                ))}
-            </div>
+          </div>
+        </div>
+
       </div>
 
-      {/* 3. GALERÍA MASONRY (Pinterest) */}
-      {/* Ideal para 6 fotos de tamaños variados */}
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+   {/* --- PARTE INFERIOR (LAYOUT HÍBRIDO 3+2 - TODO FLEX) --- */}
+      <div className="space-y-4 p-4 md:p-0">
           
-          {project.gallery?.map((img, index) => (
-            <div key={index} className="break-inside-avoid mb-4">
-                <img 
-                    src={img} 
-                    alt={`Fanzine detalle ${index + 1}`} 
-                    className="w-full h-auto rounded-sm hover:opacity-95 transition-opacity duration-300"
-                />
-            </div>
-          ))}
+          {/* 1. FILA DE ARRIBA (Las 3 primeras) */}
+          {/* Usamos FLEX igual que abajo para obligar a que se pongan horizontales */}
+          <div className="flex flex-col md:flex-row gap-4 w-full">
+            {project.gallery?.slice(0, 3).map((img, index) => (
+                <div key={`top-${index}`} className="w-full md:w-1/3">
+                    <img 
+                        src={img} 
+                        alt={`Detalle fanzine ${index + 1}`} 
+                        className="w-full h-auto rounded-sm hover:opacity-95 transition-opacity duration-300 object-cover"
+                    />
+                </div>
+            ))}
+          </div>
+
+          {/* 2. FILA DE ABAJO (Las 2 últimas) - CENTRADAS */}
+          <div className="flex flex-col md:flex-row justify-center gap-4 w-full">
+            {project.gallery?.slice(3, 5).map((img, index) => (
+                // w-full md:w-1/3 asegura que midan lo mismo que las de arriba
+                <div key={`bottom-${index}`} className="w-full md:w-1/3">
+                    <img 
+                        src={img} 
+                        alt={`Detalle fanzine ${index + 4}`} 
+                        className="w-full h-auto rounded-sm hover:opacity-95 transition-opacity duration-300 object-cover"
+                    />
+                </div>
+            ))}
+          </div>
 
       </div>
-
     </div>
   );
 }

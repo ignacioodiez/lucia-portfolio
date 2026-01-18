@@ -1,6 +1,57 @@
 // src/data/projects.js
 
 export const projects = [
+ {
+    id: 11, // Asegúrate de que este ID no esté repetido
+    title: "Cuerpos taxidérmicos",
+    slug: "cuerpos-taxidermicos",
+    categories: ["Cuerpo", "Materialidades"],
+    year: "2024",
+    tags: ["Cuerpo", "Materialidades"],
+    
+    // Descripción
+    description: "Este proyecto explora la banalización del cuerpo humano al tratarlo como un objeto de consumo más. A través de un positivado en látex de mi propia piel, utilizo la taxidermia para simbolizar la cosificación de nuestra existencia. Al convertir la piel en un material manipulable y expuesto, la obra cuestiona la supuesta superioridad humana y nos enfrenta a la realidad de ser reducidos a meros objetos inanimados.\n\nEl uso del látex refuerza esta idea de vulnerabilidad, vinculando la protección de la piel con la fragilidad de las plantas. Al equiparar lo humano con lo vegetal, la pieza busca subvertir las nociones de poder y resistencia, invitando a una reflexión sobre nuestra posición en el orden natural. Es un ejercicio de honestidad material donde mi propio cuerpo se convierte en el recurso para cuestionar cómo valoramos la vida en un entorno de explotación constante.",
+    
+    // IMAGEN PRINCIPAL (Banner)
+    image: "/img/cuerpos/taxidermia_1.jpg", 
+    
+    // RESTO DE LA GALERÍA
+    gallery: [
+        "/img/cuerpos/taxidermia_1.jpg",
+        "/img/cuerpos/taxidermia_2.png",
+        "/img/cuerpos/taxidermia_3.png",
+        "/img/cuerpos/taxidermia_4.png"
+    ]
+},
+
+
+ {
+    id: 8,
+    title: "Taller de Peluches",
+    slug: "taller-peluches",
+    categories: ["Textil", "Colectividad", "Materialidades",],
+    year: "2025",
+    tags: ["Textil", "Colectividad", "Materialidades"],
+    
+    group: "FIBRA",
+    isFibraChild: true,
+
+    description: "Este taller propuso imaginar y confeccionar criaturas textiles a partir de materiales reciclados. Partimos de prendas en desuso, botones y retales, reivindicando el reciclaje como acto creativo y político.\n\nA través de la costura manual, lxs participantes dieron vida a criaturas híbridas y expresivas. El peluche dejó de ser un objeto estandarizado para convertirse en una herramienta de auto-representación y afecto.",
+    
+    image: "/img/fibra/taller-peluches/FOTO9.png",
+    gallery: [
+        "/img/fibra/taller-peluches/FOTO1.jpg",
+        "/img/fibra/taller-peluches/FOTO2.png",
+        "/img/fibra/taller-peluches/FOTO3.jpg",
+        "/img/fibra/taller-peluches/FOTO4.png",
+        "/img/fibra/taller-peluches/FOTO5.png",
+        "/img/fibra/taller-peluches/FOTO6.png",
+        "/img/fibra/taller-peluches/FOTO7.png",
+        "/img/fibra/taller-peluches/FOTO8.png",
+        "/img/fibra/taller-peluches/FOTO9.png",
+    ]
+  },
+
   {
     id: 1, // O el número que toque
     title: "Útiles textiles",
@@ -32,22 +83,8 @@ La escritura de estos pasos, clara y accesible, dialoga con la tradición del ap
       "/img/utiles-textiles/IMG_5940.jpg" // <--- OJO: Esta es la HEIC convertida
     ]
   },
-  {
-    id: 2, // Ajusta el ID según toque
-    title: "Cómo pegar un cartel",
-    categories: ["Editorial", "Activismo", "Acción"],
-    year: "2025",
-    tags: ["Activismo", "Acción", "Editorial"],
-    slug: "como-pegar-un-cartel", // IMPORTANTE: Este slug debe coincidir con la carpeta que crearemos
-    description: `Este póster funciona como arte útil y acción directa. Debajo del título se lee una guía práctica para preparar engrudo casero: una receta sencilla, accesible y ecológica para pegar carteles en el espacio público. La pieza busca ofrecer herramientas concretas para la acción ciudadana, promoviendo la autonomía y la sostenibilidad en las prácticas de comunicación popular.
 
-El propio cartel se difunde utilizando el engrudo que enseña a hacer, completando así un gesto coherente entre forma y contenido. Al pegarse en muros o espacios de tránsito, la obra se activa como dispositivo pedagógico en contexto, pensada para circular más allá de los marcos institucionales del arte. Este proyecto parte del deseo de compartir saberes y de reivindicar el espacio público como lugar de expresión, encuentro y lucha colectiva.`,
-    
-    // Foto única vertical
-    image: "/img/cartel/FOTO1.jpg",
-    gallery: ["/img/cartel/FOTO1.jpg"] // Lo dejamos vacío porque no usaremos la galería estándar
-  },
- {
+{
     id: 3, // Asegúrate de que este número sigue el orden (1, 2, 3...)
     title: "Telar humano",
     categories: ["Textil", "Acción", "Cuerpo", "Colectividad"],
@@ -69,7 +106,81 @@ La pieza explora el tejido no solo como técnica, sino como metáfora encarnada 
       "/img/telarhumano/FOTO_4.jpg"
     ]
   },
- {
+
+  {
+    id: 10,
+    title: "Fanzines Infames",
+    slug: "fanzines-infames",
+    categories: ["Editorial", "Textil", "Colectividad"],
+    year: "2023-2024",
+    tags: ["Editorial", "Textil", "Colectividad"],
+    
+    group: "FIBRA",
+    isFibraChild: true,
+
+    description: "Desarrollamos un fanzine imitando cuadernos de caligrafía, pero con frases bordadas sobre sexualidad para reflexionar sobre la educación afectiva. Hicimos dos versiones: una intervenida y otra para ser bordada por el público.\n\nTras recibir el premio Fanzines Infames, ampliamos el proyecto interviniendo 'babis' escolares con mensajes sobre la domesticación del deseo y la sumisión, reescribiendo esa educación desde una pedagogía crítica y desobediente. Expuesto en Tipos Infames (Madrid).",
+    
+    image: "/img/fibra/fanzines-infames/FOTO6.jpeg",
+    gallery: [
+        "/img/fibra/fanzines-infames/FOTO1.PNG",
+        "/img/fibra/fanzines-infames/FOTO2.PNG",
+        "/img/fibra/fanzines-infames/FOTO3.PNG",
+        "/img/fibra/fanzines-infames/FOTO4.PNG",
+        "/img/fibra/fanzines-infames/FOTO5.PNG",
+        "/img/fibra/fanzines-infames/FOTO6.jpeg"
+    ]
+  },
+
+    {
+    id: 9,
+    title: "Congreso Postsexualidades",
+    slug: "congreso-postsexualidades",
+    categories: ["Textil", "Cuerpo"],
+    year: "2024",
+    tags: ["Textil", "Cuerpo"],
+    
+    group: "FIBRA",
+    isFibraChild: true,
+
+    description: "Taller para explorar la intimidad a través del bordado sobre ropa interior. Se buscó resignificar estas prendas como formas de empoderamiento, más allá de su función práctica.\n\nEl encuentro ofreció un espacio seguro para el diálogo y el acompañamiento. Más que una obra terminada, el objetivo fue generar un círculo de afectos y reflexionar sobre la relación entre lo que vestimos y cómo nos habitamos.",
+    
+    image: "/img/fibra/congreso-postsex/postsex4.jpg",
+    gallery: [
+        "/img/fibra/congreso-postsex/postsex2.jpg",
+        "/img/fibra/congreso-postsex/postsex1.jpg",
+        "/img/fibra/congreso-postsex/postsex4.jpg",
+        "/img/fibra/congreso-postsex/postsex3.jpg"
+    ]
+  },
+
+
+  {
+    id: 7,
+    title: "Borda Palestina",
+    slug: "borda-palestina",
+    categories: ["Textil", "Activismo"],
+    year: "2024",
+    tags: ["Textil", "Activismo"],
+    
+    group: "FIBRA", 
+    isFibraChild: true, 
+
+    description: "Este proyecto consistió en la realización de varios tatriz (bordados tradicionales palestinos) como parte de una acción colectiva organizada en Casa Árabe. La propuesta buscaba visibilizar y reivindicar el tatriz no solo como práctica artística, sino como símbolo profundo de identidad, memoria y resistencia.\n\nBordar se convierte así en un acto de cuidado, de preservación y denuncia. A través de estas piezas, se propuso una toma de conciencia sobre la urgencia de conservar esta práctica viva.",
+    
+    // --- AQUÍ ESTÁ LA CLAVE ---
+    // 1. El vídeo que saldrá en la portada
+    gridVideo: "/img/fibra/borda-palestina/PALESTINAVIDEO.mp4",
+
+    // 2. La imagen de respaldo (por si el vídeo falla o para cuando entras al proyecto)
+    image: "/img/fibra/borda-palestina/FOTO1.jpg", 
+    
+    gallery: [
+        "/img/fibra/borda-palestina/FOTO1.jpeg",
+        
+    ]
+},
+
+{
     id: 4, // Seguimos la cuenta
     title: "Residencias tiza",
     categories: ["Colectividad", "Materialidades"],
@@ -90,6 +201,10 @@ Se explora la plasticidad del grabado como una forma sensible de registro: cada 
       "/img/tiza/FOTO_3.jpg"
     ]
   },
+ 
+
+
+ 
 
   {
     id: 5,
@@ -118,6 +233,8 @@ Se explora la plasticidad del grabado como una forma sensible de registro: cada 
     ]
   },
 
+
+  
   
 
 
@@ -128,9 +245,9 @@ Se explora la plasticidad del grabado como una forma sensible de registro: cada 
     id: 6,
     title: "Colectivo FIBRA",
     slug: "colectivo-fibra",
-    categories: ["Textil", "Gestión", "Comunidad"],
+    categories: ["Textil", "Colectividad"],
     year: "2023-2025",
-    tags: ["Textil", "Colectividad", "Materialidades"],
+    tags: ["Textil", "Colectividad"],
     
     // FLAGS ESPECIALES
     group: "FIBRA",          // Etiqueta para el filtro
@@ -143,108 +260,57 @@ Se explora la plasticidad del grabado como una forma sensible de registro: cada 
     FIBRA me ha permitido profundizar en el arte textil no solo como lenguaje plástico, sino también como herramienta para abordar problemáticas sociales e históricas. Más allá de revalorizar técnicas tradicionalmente desprestigiadas, me interesa especialmente cómo el textil ha generado históricamente espacios de encuentro entre mujeres. Esos espacios donde se entrelazan lo artístico y lo relacional son los que realmente sostienen mi interés: no tanto el objeto acabado como los vínculos y aprendizajes que se tejen en el proceso compartido.`
   },
 
+  
+
   // 7. HIJO 1: BORDA PALESTINA
-  {
-    id: 7,
-    title: "Borda Palestina",
-    slug: "borda-palestina",
-    categories: ["Textil", "Activismo"],
+  
+
+  // 8. HIJO 2: TALLER PELUCHES
+ 
+
+  // 9. HIJO 3: CONGRESO POSTSEXUALIDADES
+
+
+  // 10. HIJO 4: FANZINES INFAMES
+  
+{
+    id: 12, // O el número que toque
+    title: "Graffiti/Ganchillo",
+    slug: "graffiti-ganchillo",
+    categories: ["Textil"],
     year: "2024",
-    tags: ["Textil", "Activismo"],
+    tags: ["Textil"],
     
-    group: "FIBRA", 
-    isFibraChild: true, 
-
-    description: "Este proyecto consistió en la realización de varios tatriz (bordados tradicionales palestinos) como parte de una acción colectiva organizada en Casa Árabe. La propuesta buscaba visibilizar y reivindicar el tatriz no solo como práctica artística, sino como símbolo profundo de identidad, memoria y resistencia.\n\nBordar se convierte así en un acto de cuidado, de preservación y denuncia. A través de estas piezas, se propuso una toma de conciencia sobre la urgencia de conservar esta práctica viva.",
+    description: "Esta pieza traslada el textil (históricamente relegado al ámbito privado y doméstico) al espacio público a través del lenguaje del graffiti. Al intervenir el muro con la grafía del ganchillo, el proyecto explora la vulnerabilidad del \"cuerpo\" textil, que aquí queda desprotegido y expuesto al tacto o la alteración ajena.\n\nUtilizando la premisa de que \"lo personal es político\", la obra reivindica los oficios invisibilizados y asociados a lo femenino.",
     
-    // --- AQUÍ ESTÁ LA CLAVE ---
-    // 1. El vídeo que saldrá en la portada
-    gridVideo: "/img/fibra/borda-palestina/PALESTINAVIDEO.mp4",
-
-    // 2. La imagen de respaldo (por si el vídeo falla o para cuando entras al proyecto)
-    image: "/img/fibra/borda-palestina/FOTO1.jpg", 
+    // FOTO PORTADA
+    image: "/img/grafitti/FOTO1.png",
     
+    // GALERÍA (Necesitamos al menos 2 fotos para la maquetación actual)
+    // gallery[0] = La foto estrecha lateral
+    // gallery[1] = La foto grande de abajo
     gallery: [
-        "/img/fibra/borda-palestina/FOTO1.jpeg",
-        
+        "/img/grafitti/FOTO1.png", 
+        "/img/grafitti/FOTO2.jpg"
     ]
 },
 
-  // 8. HIJO 2: TALLER PELUCHES
   {
-    id: 8,
-    title: "Taller de Peluches",
-    slug: "taller-peluches",
-    categories: ["Reciclaje", "Juego"],
+    id: 2, // Ajusta el ID según toque
+    title: "Cómo pegar un cartel",
+    categories: ["Editorial", "Activismo", "Acción"],
     year: "2025",
-    tags: ["Reciclaje", "Juego"],
-    
-    group: "FIBRA",
-    isFibraChild: true,
+    tags: ["Activismo", "Acción", "Editorial"],
+    slug: "como-pegar-un-cartel", // IMPORTANTE: Este slug debe coincidir con la carpeta que crearemos
+    description: `Este póster funciona como arte útil y acción directa. Debajo del título se lee una guía práctica para preparar engrudo casero: una receta sencilla, accesible y ecológica para pegar carteles en el espacio público. La pieza busca ofrecer herramientas concretas para la acción ciudadana, promoviendo la autonomía y la sostenibilidad en las prácticas de comunicación popular.
 
-    description: "Este taller propuso imaginar y confeccionar criaturas textiles a partir de materiales reciclados. Partimos de prendas en desuso, botones y retales, reivindicando el reciclaje como acto creativo y político.\n\nA través de la costura manual, lxs participantes dieron vida a criaturas híbridas y expresivas. El peluche dejó de ser un objeto estandarizado para convertirse en una herramienta de auto-representación y afecto.",
+El propio cartel se difunde utilizando el engrudo que enseña a hacer, completando así un gesto coherente entre forma y contenido. Al pegarse en muros o espacios de tránsito, la obra se activa como dispositivo pedagógico en contexto, pensada para circular más allá de los marcos institucionales del arte. Este proyecto parte del deseo de compartir saberes y de reivindicar el espacio público como lugar de expresión, encuentro y lucha colectiva.`,
     
-    image: "/img/fibra/taller-peluches/FOTO9.png",
-    gallery: [
-        "/img/fibra/taller-peluches/FOTO1.jpg",
-        "/img/fibra/taller-peluches/FOTO2.png",
-        "/img/fibra/taller-peluches/FOTO3.jpg",
-        "/img/fibra/taller-peluches/FOTO4.png",
-        "/img/fibra/taller-peluches/FOTO5.png",
-        "/img/fibra/taller-peluches/FOTO6.png",
-        "/img/fibra/taller-peluches/FOTO7.png",
-        "/img/fibra/taller-peluches/FOTO8.png",
-        "/img/fibra/taller-peluches/FOTO9.png",
-    ]
+    // Foto única vertical
+    image: "/img/cartel/FOTO1.jpg",
+    gallery: ["/img/cartel/FOTO1.jpg"] // Lo dejamos vacío porque no usaremos la galería estándar
   },
-
-  // 9. HIJO 3: CONGRESO POSTSEXUALIDADES
-  {
-    id: 9,
-    title: "Congreso Postsexualidades",
-    slug: "congreso-postsexualidades",
-    categories: ["Intimidad", "Cuerpo"],
-    year: "2024",
-    tags: ["Intimidad", "Cuerpo"],
-    
-    group: "FIBRA",
-    isFibraChild: true,
-
-    description: "Taller para explorar la intimidad a través del bordado sobre ropa interior. Se buscó resignificar estas prendas como formas de empoderamiento, más allá de su función práctica.\n\nEl encuentro ofreció un espacio seguro para el diálogo y el acompañamiento. Más que una obra terminada, el objetivo fue generar un círculo de afectos y reflexionar sobre la relación entre lo que vestimos y cómo nos habitamos.",
-    
-    image: "/img/fibra/congreso-postsex/postsex4.jpg",
-    gallery: [
-        "/img/fibra/congreso-postsex/postsex1.jpg",
-        "/img/fibra/congreso-postsex/postsex2.jpg",
-        "/img/fibra/congreso-postsex/postsex3.jpg",
-        "/img/fibra/congreso-postsex/postsex4.jpg"
-    ]
-  },
-
-  // 10. HIJO 4: FANZINES INFAMES
-  {
-    id: 10,
-    title: "Fanzines Infames",
-    slug: "fanzines-infames",
-    categories: ["Pedagogía", "Publicación"],
-    year: "2023-2024",
-    tags: ["Pedagogía", "Publicación"],
-    
-    group: "FIBRA",
-    isFibraChild: true,
-
-    description: "Desarrollamos un fanzine imitando cuadernos de caligrafía, pero con frases bordadas sobre sexualidad para reflexionar sobre la educación afectiva. Hicimos dos versiones: una intervenida y otra para ser bordada por el público.\n\nTras recibir el premio Fanzines Infames, ampliamos el proyecto interviniendo 'babis' escolares con mensajes sobre la domesticación del deseo y la sumisión, reescribiendo esa educación desde una pedagogía crítica y desobediente. Expuesto en Tipos Infames (Madrid).",
-    
-    image: "/img/fibra/fanzines-infames/FOTO6.jpeg",
-    gallery: [
-        "/img/fibra/fanzines-infames/FOTO1.PNG",
-        "/img/fibra/fanzines-infames/FOTO2.PNG",
-        "/img/fibra/fanzines-infames/FOTO3.PNG",
-        "/img/fibra/fanzines-infames/FOTO4.PNG",
-        "/img/fibra/fanzines-infames/FOTO5.PNG",
-        "/img/fibra/fanzines-infames/FOTO6.jpeg"
-    ]
-  }
+ 
 
 
 ];

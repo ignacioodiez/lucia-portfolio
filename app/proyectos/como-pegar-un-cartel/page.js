@@ -42,26 +42,23 @@ export default function CartelPage() {
           <div className="p-8 md:p-24 max-w-2xl">
             
             <div className="mb-10 border-b border-black pb-6">
-                <h1 className="text-5xl font-bold mb-4 leading-tight uppercase">
+                <h1 className="text-4xl md:text-6xl font-bold mb-4 uppercase tracking-tight">
                 {project.title}
                 </h1>
-                <div className="flex justify-between items-end text-sm font-mono text-gray-500">
-                    <span>{project.categories.join(' + ')}</span>
-                    <span className="text-black font-bold text-xl">{project.year}</span>
-                </div>
+                <div className="flex flex-wrap gap-6 text-sm md:text-base text-gray-500 font-mono">
+            <span className="text-black">
+                {project.categories ? project.categories.join(' / ') : 'Sin categoría'}
+            </span>
+            <span>—</span>
+            <span>{project.year}</span>
+        </div>
             </div>
 
             <div className="prose prose-lg text-gray-800 whitespace-pre-line mb-10">
                 <p>{project.description}</p>
             </div>
 
-            <div className="flex flex-wrap gap-2">
-                {project.tags.map(tag => (
-                    <span key={tag} className="border border-black px-3 py-1 text-xs font-bold uppercase hover:bg-black hover:text-white transition-colors cursor-default">
-                        {tag}
-                    </span>
-                ))}
-            </div>
+
 
           </div>
         </div>

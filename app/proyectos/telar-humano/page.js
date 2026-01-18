@@ -46,26 +46,23 @@ export default function TelarPage() {
           <div className="p-8 md:p-12 md:pr-24 w-full"> 
             
             <div className="mb-10 border-b border-black pb-6">
-                <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight uppercase">
+                <h1 className="text-4xl md:text-6xl font-bold mb-4 uppercase tracking-tight">
                 {project.title}
                 </h1>
-                <div className="flex justify-between items-end text-sm font-mono text-gray-500">
-                    <span className="text-black uppercase tracking-wider text-lg">{project.categories.join(' + ')}</span>
-                    <span className="text-black font-bold text-2xl">{project.year}</span>
-                </div>
+                <div className="flex flex-wrap gap-6 text-sm md:text-base text-gray-500 font-mono">
+            <span className="text-black">
+                {project.categories ? project.categories.join(' / ') : 'Sin categoría'}
+            </span>
+            <span>—</span>
+            <span>{project.year}</span>
+        </div>
             </div>
 
             <div className="prose prose-xl text-gray-800 whitespace-pre-line mb-12 max-w-none">
                 <p>{project.description}</p>
             </div>
 
-            <div className="flex flex-wrap gap-3">
-                {project.tags.map(tag => (
-                    <span key={tag} className="bg-gray-100 text-gray-600 px-4 py-2 text-sm font-bold uppercase rounded-full">
-                        #{tag}
-                    </span>
-                ))}
-            </div>
+            
 
           </div>
         </div>

@@ -44,9 +44,9 @@ export default function AboutPage() {
           <div className="pt-8 border-t border-gray-200 mt-8">
             <h3 className="font-bold text-sm uppercase tracking-wider mb-4">Contacto</h3>
             <div className="flex gap-6 text-sm">
-              <a href="mailto:email@ejemplo.com" className="hover:text-gray-500 underline">Email</a>
-              <a href="https://instagram.com/tu_usuario" target="_blank" className="hover:text-gray-500 underline">Instagram</a>
-              <a href="https://linkedin.com/in/tu_usuario" target="_blank" className="hover:text-gray-500 underline">LinkedIn</a>
+              <a href="mailto:luciamartinlagunas@gmail.com" className="hover:text-gray-500 underline">Email</a>
+              <a href="https://instagram.com/lucayuca" target="_blank" className="hover:text-gray-500 underline">Instagram</a>
+              <a href="https://linkedin.com/in/lucía-martín-lagunas-profile" target="_blank" className="hover:text-gray-500 underline">LinkedIn</a>
             </div>
           </div>
 

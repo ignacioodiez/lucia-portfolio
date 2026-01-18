@@ -15,7 +15,7 @@ export default function CariesPage() {
       <div className="mb-8">
         <Link 
             href="/" 
-            className="text-sm font-medium text-gray-500 hover:text-black transition-colors border border-gray-200 px-4 py-2 rounded-full"
+            className="text-sm font-medium text-gray-500 hover:text-black transition-colors"
         >
             ← Volver
         </Link>
@@ -29,14 +29,13 @@ export default function CariesPage() {
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight uppercase">
                 {project.title}
             </h1>
-            <div className="flex justify-between items-end text-sm font-mono text-gray-500">
-                <span className="text-black uppercase tracking-wider text-lg">
-                    {project.categories.join(' + ')}
-                </span>
-                <span className="text-black font-bold text-2xl">
-                    {project.year}
-                </span>
-            </div>
+             <div className="flex flex-wrap gap-6 text-sm md:text-base text-gray-500 font-mono">
+            <span className="text-black">
+                {project.categories ? project.categories.join(' / ') : 'Sin categoría'}
+            </span>
+            <span>—</span>
+            <span>{project.year}</span>
+        </div>
         </div>
 
         {/* DESCRIPCIÓN */}
@@ -63,7 +62,7 @@ export default function CariesPage() {
                 loop 
                 muted 
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full "
             />
         </div>
 
@@ -81,7 +80,7 @@ export default function CariesPage() {
                     <img 
                         src={foto} 
                         alt={`Cara ${index + 1}`} 
-                        className="absolute inset-0 w-full h-full object-cover block" 
+                        className="absolute inset-0 w-full h-full object-contain block p-2" 
                     />
                 </div>
             ))}
