@@ -35,18 +35,13 @@ export default function Home() {
     }
 
     // PASO B: El resto de etiquetas funcionan como "OR" (O una O la otra).
-    // Si hay etiquetas normales seleccionadas (ej: Cuerpo, Textil)...
     if (otherTags.length > 0) {
-        // ...el proyecto debe tener AL MENOS UNA de ellas.
         const hasMatchingTag = otherTags.some(tag => project.tags.includes(tag));
-        
-        // Si no tiene ninguna de las etiquetas seleccionadas, fuera.
         if (!hasMatchingTag) {
             return false;
         }
     }
 
-    // Si pasa el filtro de FIBRA (o no estaba activo) y pasa el de los tags (o no había), entra.
     return true;
   });
 
@@ -128,7 +123,7 @@ export default function Home() {
                 ) : (
                     <img 
                         src={heroProject.image} 
-                        alt={heroProject.title[language]} 
+                        alt={heroProject.title[language]} // <--- IMPORTANTE: [language]
                         className="w-full h-full object-cover" 
                     />
                 )}
@@ -140,7 +135,7 @@ export default function Home() {
                                 {language === 'es' ? 'Proyecto Destacado' : 'Featured Project'}
                             </span>
                             <h2 className="text-black text-2xl md:text-5xl font-bold uppercase tracking-tighter leading-none">
-                                {heroProject.title[language]}
+                                {heroProject.title[language]} {/* <--- IMPORTANTE: [language] */}
                             </h2>
                         </div>
                         <span className="text-3xl text-black">→</span>
@@ -170,7 +165,7 @@ export default function Home() {
             ) : (
                 <img 
                     src={project.image} 
-                    alt={project.title[language]} 
+                    alt={project.title[language]} // <--- IMPORTANTE
                     className="w-full h-auto object-contain block"
                 />
             )}
@@ -184,7 +179,7 @@ export default function Home() {
                             </span>
                         )}
                         <h2 className="text-black text-lg font-bold uppercase tracking-wide leading-none">
-                            {project.title[language]}
+                            {project.title[language]} {/* <--- IMPORTANTE */}
                         </h2>
                     </div>
                     <span className="text-black text-xl">→</span>
