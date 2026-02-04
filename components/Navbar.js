@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex justify-start items-center gap-20 md:gap-230 px-8 pt-8 pb-0 bg-white text-black font-sans">
+    <nav className="flex justify-start items-center gap-4 md:gap-120 px-8 pt-8 pb-0 bg-white text-black font-sans">
       
       {/* --- LOGO ZONE --- */}
       <div className="flex justify-start mb-4 md:mb-0">
