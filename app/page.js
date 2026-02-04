@@ -1,12 +1,16 @@
-// src/app/page.js
 'use client';
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { projects } from '../data/projects';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../data/translations';
 
 export default function Home() {
-  const [filterMode, setFilterMode] = useState('ALL'); 
+  const { language } = useLanguage(); 
+  const t = translations[language];
+
+  // Estado para las etiquetas seleccionadas
   const [selectedTags, setSelectedTags] = useState([]);
 
   // --- 1. PREPARAR DATOS ---
@@ -15,10 +19,35 @@ export default function Home() {
     return [...new Set(tags)].sort();
   }, []);
 
+  // --- LÓGICA DE FILTRADO HÍBRIDA (FIBRA=AND, RESTO=OR) ---
   const allFiltered = projects.filter((project) => {
-    if (filterMode === 'FIBRA') return project.group === 'FIBRA';
+    
+    // 1. Si no hay nada seleccionado, mostramos TODO
     if (selectedTags.length === 0) return true;
-    return selectedTags.some(tag => project.tags.includes(tag));
+
+    // 2. Separamos si "FIBRA" está seleccionado del resto de tags
+    const isFibraSelected = selectedTags.includes('FIBRA');
+    const otherTags = selectedTags.filter(tag => tag !== 'FIBRA');
+
+    // PASO A: El filtro "Jefe". Si FIBRA está marcado, el proyecto TIENE que ser FIBRA.
+    if (isFibraSelected && project.group !== 'FIBRA') {
+        return false; // Si no es fibra, fuera.
+    }
+
+    // PASO B: El resto de etiquetas funcionan como "OR" (O una O la otra).
+    // Si hay etiquetas normales seleccionadas (ej: Cuerpo, Textil)...
+    if (otherTags.length > 0) {
+        // ...el proyecto debe tener AL MENOS UNA de ellas.
+        const hasMatchingTag = otherTags.some(tag => project.tags.includes(tag));
+        
+        // Si no tiene ninguna de las etiquetas seleccionadas, fuera.
+        if (!hasMatchingTag) {
+            return false;
+        }
+    }
+
+    // Si pasa el filtro de FIBRA (o no estaba activo) y pasa el de los tags (o no había), entra.
+    return true;
   });
 
   const heroProject = allFiltered.find(p => p.isFibraParent);
@@ -26,7 +55,6 @@ export default function Home() {
 
   // --- 2. FUNCIONES ---
   const toggleTag = (tag) => {
-    setFilterMode('ALL');
     if (selectedTags.includes(tag)) {
       setSelectedTags(selectedTags.filter(t => t !== tag));
     } else {
@@ -34,27 +62,19 @@ export default function Home() {
     }
   };
 
-  const activateFibra = () => {
-    if (filterMode === 'FIBRA') {
-        setFilterMode('ALL');
-    } else {
-        setFilterMode('FIBRA');
-        setSelectedTags([]);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white">
       
       {/* --- HEADER --- */}
-      <div className="container mx-auto px-4 pt-4 pb-8">
+      <div className="container mx-auto px-4 pt-0 pb-8">
         <div className="flex flex-wrap items-center justify-center gap-4">
             
+            {/* BOTÓN FIBRA */}
             <button
-                onClick={activateFibra}
+                onClick={() => toggleTag('FIBRA')}
                 className={`
                 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all border border-black
-                ${filterMode === 'FIBRA' 
+                ${selectedTags.includes('FIBRA') 
                     ? 'bg-black text-white' 
                     : 'bg-white text-black hover:bg-gray-100'}
                 `}
@@ -67,7 +87,10 @@ export default function Home() {
             <div className="flex flex-wrap gap-2 justify-center">
                 {allTags.map((tag) => {
                     if (tag === 'FIBRA') return null; 
+                    
                     const isActive = selectedTags.includes(tag);
+                    const displayLabel = t.tags[tag] || tag; 
+
                     return (
                     <button
                         key={tag}
@@ -79,7 +102,7 @@ export default function Home() {
                             : 'bg-white text-gray-500 border-gray-200 hover:border-black hover:text-black'}
                         `}
                     >
-                        {tag}
+                        {displayLabel}
                     </button>
                     );
                 })}
@@ -88,7 +111,7 @@ export default function Home() {
       </div>
 
       {/* ========================================== */}
-      {/* 1. ZONA HERO (FIBRA PADRE) */}
+      {/* 1. HERO ZONE (FIBRA PADRE) */}
       {/* ========================================== */}
       {heroProject && (
         <div className="w-full mb-4 px-4 md:px-8 mt-4 animate-fadeIn">
@@ -96,7 +119,6 @@ export default function Home() {
                 href={`/proyectos/${heroProject.slug}`} 
                 className="block relative group rounded-sm h-[50vh] md:h-[70vh] w-full bg-gray-100 overflow-hidden"
             >
-                {/* LÓGICA VÍDEO vs FOTO */}
                 {heroProject.gridVideo ? (
                     <video 
                         src={heroProject.gridVideo} 
@@ -106,20 +128,19 @@ export default function Home() {
                 ) : (
                     <img 
                         src={heroProject.image} 
-                        alt={heroProject.title} 
+                        alt={heroProject.title[language]} 
                         className="w-full h-full object-cover" 
                     />
                 )}
                 
-                {/* CAPA FANTASMA (HOVER) */}
-                <div className="absolute inset-0 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/5">
-                    <div className="bg-white px-8 py-6 border-t border-gray-100 flex justify-between items-center w-full">
+                <div className="absolute inset-0 flex flex-col justify-start opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/5">
+                    <div className="bg-white px-8 py-6 border-b border-gray-100 flex justify-between items-center w-full">
                         <div>
                             <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1 block">
-                                Proyecto Destacado
+                                {language === 'es' ? 'Proyecto Destacado' : 'Featured Project'}
                             </span>
                             <h2 className="text-black text-2xl md:text-5xl font-bold uppercase tracking-tighter leading-none">
-                                {heroProject.title}
+                                {heroProject.title[language]}
                             </h2>
                         </div>
                         <span className="text-3xl text-black">→</span>
@@ -130,7 +151,7 @@ export default function Home() {
       )}
 
       {/* ========================================== */}
-      {/* 2. ZONA MASONRY (RESTO DE PROYECTOS) */}
+      {/* 2. MASONRY ZONE (RESTO DE PROYECTOS) */}
       {/* ========================================== */}
       <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4 px-4 md:px-8 pb-12">
         
@@ -140,25 +161,22 @@ export default function Home() {
             key={project.id}
             className="block break-inside-avoid relative group rounded-sm border border-gray-100 bg-gray-50 overflow-hidden"
           >
-            {/* LÓGICA VÍDEO vs FOTO */}
             {project.gridVideo ? (
                 <video 
                     src={project.gridVideo} 
                     autoPlay loop muted playsInline 
-                    // Usamos object-contain o cover según prefieras, aquí mantengo el estilo masonry
                     className="w-full h-auto block"
                 />
             ) : (
                 <img 
                     src={project.image} 
-                    alt={project.title} 
+                    alt={project.title[language]} 
                     className="w-full h-auto object-contain block"
                 />
             )}
 
-            {/* CAPA FANTASMA (HOVER) */}
-            <div className="absolute inset-0 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="bg-white px-5 py-4 border-t border-gray-50 flex justify-between items-center w-full shadow-sm">
+            <div className="absolute inset-0 flex flex-col justify-start opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="bg-white px-5 py-4 border-b border-gray-50 flex justify-between items-center w-full shadow-sm">
                     <div className="flex flex-col">
                         {project.isFibraChild && (
                             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">
@@ -166,7 +184,7 @@ export default function Home() {
                             </span>
                         )}
                         <h2 className="text-black text-lg font-bold uppercase tracking-wide leading-none">
-                            {project.title}
+                            {project.title[language]}
                         </h2>
                     </div>
                     <span className="text-black text-xl">→</span>
@@ -181,12 +199,14 @@ export default function Home() {
       {/* MENSAJE VACÍO */}
       {allFiltered.length === 0 && (
         <div className="text-center py-20">
-          <p className="text-gray-400 font-mono">No hay proyectos.</p>
+          <p className="text-gray-400 font-mono">
+            {t.home.empty}
+          </p>
           <button 
-            onClick={() => { setFilterMode('ALL'); setSelectedTags([]); }}
+            onClick={() => setSelectedTags([])} 
             className="mt-4 text-sm font-bold underline hover:text-gray-600"
           >
-            Limpiar filtros
+            {t.home.clear}
           </button>
         </div>
       )}
